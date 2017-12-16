@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Item
 
-# Create your views here.
+
+index = ListView.as_view(model=Item)
+
