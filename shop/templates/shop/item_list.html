@@ -12,7 +12,7 @@
                             <p class="card-text" style="line-height: 1.5em; height: 3em; text-overflow: ellipsis;">{{ item.name }}</p>
                             <p class="card-text text-right">{{ item.amount|intcomma }}원</p>
                         </div>
-                        <a class="btn btn-primary btn-block" href="#">구매하기</a>
+                        <a class="btn btn-primary btn-block" href="{% url "shop:order_new" item.pk %}">구매하기</a>
                     </div>
                 </div>
             {% endfor %}
