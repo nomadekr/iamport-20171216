@@ -7,3 +7,6 @@ class Item(models.Model):
     amount = models.PositiveIntegerField(verbose_name='결제금액')
     photo = models.ImageField()
 
+    def __str__(self):
+        return self.name
+
