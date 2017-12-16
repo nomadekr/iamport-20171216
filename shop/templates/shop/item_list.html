@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load humanize %}
 
 {% block content %}
     <div class="container mt-3">
@@ -9,7 +10,7 @@
                         <img class="card-img-top" src="{{ item.photo.url }}" />
                         <div class="card-body">
                             <p class="card-text" style="line-height: 1.5em; height: 3em; text-overflow: ellipsis;">{{ item.name }}</p>
-                            <p class="card-text text-right">{{ item.amount }}원</p>
+                            <p class="card-text text-right">{{ item.amount|intcomma }}원</p>
                         </div>
                         <a class="btn btn-primary btn-block" href="#">구매하기</a>
                     </div>
