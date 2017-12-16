@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
@@ -44,6 +45,5 @@ def order_pay(request, item_id, merchant_uid):
 
     return render(request, 'shop/pay_form.html', {
         'form': form,
-        'iamport_shop_id': 'iamport',
     })
 

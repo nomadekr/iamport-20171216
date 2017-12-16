@@ -1,6 +1,7 @@
 from uuid import uuid4
 from django.conf import settings
 from django.db import models
+from iamport import Iamport
 
 
 class Item(models.Model):
@@ -34,3 +35,18 @@ class Order(models.Model):
     class Meta:
         ordering = ('-id',)
 
+    @property
+    def api(self):
+        'Iamport Client 인스턴스'
+        return Iamport(settings.IAMPORT_API_KEY, settings.IAMPORT_API_SECRET)
+
+    def update(self, commit=True, meta=None):
+        '결재내역 갱신'
+        if self.imp_uid:
+            self.meta = meta or self.api.find(imp_uid=self.imp_uid)
+            # print(self.meta)
+            assert str(self.merchant_uid) == self.meta['merchant_uid']
+            assert self.amount == self.meta['amount']
+            self.status = self.meta['status']
+        if commit:
+            self.save()

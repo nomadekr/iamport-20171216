@@ -1,0 +1,7 @@
+
+
+django<2
+pillow
+
+iamport-rest-client
+
